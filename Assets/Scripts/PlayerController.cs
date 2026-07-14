@@ -2,26 +2,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 10f;
+    public float rightSpeed = 6f;
+    public float leftSpeed = 2.5f;
     public Rigidbody2D rb;
 
-    private float movement;
+    private float currentSpeed;
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        movement = Input.GetAxis("Horizontal") * movementSpeed;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            currentSpeed = rightSpeed;
+        }
+        else
+        {
+            currentSpeed = -leftSpeed;
+        }
     }
 
     private void FixedUpdate()
     {
         Vector2 velocity = rb.linearVelocity;
-        velocity.x = movement;
+        velocity.x = currentSpeed;
         rb.linearVelocity = velocity;
     }
 }
