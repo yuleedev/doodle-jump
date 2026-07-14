@@ -13,5 +13,4 @@ like the original, you:
 unlike the original, you:
 - slowly drift left and hold the spacebar to move right!
 
-it's a bit uncomfortable at first, but that's how i ended up
-turning this game into one-key-only
+it takes a little getting used to, but it was the best way I found to make doodle jump work with just one key - have fun!
