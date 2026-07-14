@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public float rightSpeed = 6f;
     public float leftSpeed = 2.5f;
+    public float screenWidth = 3f; 
     public Rigidbody2D rb;
 
     private float currentSpeed;
@@ -22,6 +23,19 @@ public class PlayerController : MonoBehaviour
         else
         {
             currentSpeed = -leftSpeed;
+        }
+
+        Vector3 position = transform.position;
+
+        if (position.x > screenWidth)
+        {
+            position.x = -screenWidth;
+            transform.position = position;
+        }
+        else if (position.x < -screenWidth)
+        {
+            position.x = screenWidth;
+            transform.position = position;
         }
     }
 
