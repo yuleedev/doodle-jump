@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public float movementSpeed = 10f;
     public Rigidbody2D rb;
 
     private float movement;
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = Input.GetAxis("Horizontal") * moveSpeed;
+        movement = Input.GetAxis("Horizontal") * movementSpeed;
     }
 
     private void FixedUpdate()
