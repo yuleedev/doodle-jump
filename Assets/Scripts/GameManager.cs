@@ -5,20 +5,30 @@ public class GameManager : MonoBehaviour
 {
     public Transform player;
     public Camera cam;
+    public GameObject mainMenuUI;
     public GameObject gameOverUI;
     public float deathMargin = 1f;
 
     private bool isGameOver = false;
+    private bool hasStarted = false;
 
     void Start()
     {
         if (cam == null) cam = Camera.main;
         if (gameOverUI != null) gameOverUI.SetActive(false);
-        Time.timeScale = 1f;
+        if (mainMenuUI != null) mainMenuUI.SetActive(true);
+
+        Time.timeScale = 0f;
     }
 
     void Update()
     {
+        if (!hasStarted)
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) StartGame();
+            return;
+        }
+
         if (isGameOver)
         {
             if (Input.GetKeyDown(KeyCode.Space)) Restart();
@@ -31,6 +41,13 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    void StartGame()
+    {
+        hasStarted = true;
+        if (mainMenuUI != null) mainMenuUI.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     void GameOver()
