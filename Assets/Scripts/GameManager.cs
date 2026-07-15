@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour
         if (cam == null) cam = Camera.main;
         if (gameOverUI != null) gameOverUI.SetActive(false);
         if (mainMenuUI != null) mainMenuUI.SetActive(true);
-        if (scoreText != null) scoreText.text = "0";
+		if (scoreText != null)
+		{
+			scoreText.text = "0";
+			scoreText.gameObject.SetActive(false);
+		}
 
         Time.timeScale = 0f;
     }
@@ -71,6 +75,8 @@ public class GameManager : MonoBehaviour
         startY = player.position.y;
         score = 0;
         if (mainMenuUI != null) mainMenuUI.SetActive(false);
+		if (scoreText != null) scoreText.gameObject.SetActive(true);
+
 		if (menuMusic != null) menuMusic.Stop();
 		if (gameMusic != null) gameMusic.Play();
 
@@ -91,6 +97,8 @@ public class GameManager : MonoBehaviour
 
         if (finalScoreText != null)
             finalScoreText.text = "Score: " + score + "\nBest: " + best;
+
+		if (scoreText != null) scoreText.gameObject.SetActive(false);
 
 		if (gameMusic != null) gameMusic.Stop();
 		if (menuMusic != null) menuMusic.Play();
