@@ -5,6 +5,14 @@ public class Platform : MonoBehaviour
     public float jumpForce = 12f;
     public float springForce = 26f;
     public GameObject spring;
+    public AudioClip springSound;
+
+    private AudioSource audioSource;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -14,9 +22,15 @@ public class Platform : MonoBehaviour
             if (rb != null)
             {
                 float force = jumpForce;
+
                 if (spring != null && spring.activeSelf && HitSpring(collision.collider))
                 {
                     force = springForce;
+
+                    if (audioSource != null && springSound != null)
+                    {
+                        audioSource.PlayOneShot(springSound);
+                    }
                 }
 
                 Vector2 velocity = rb.linearVelocity;
