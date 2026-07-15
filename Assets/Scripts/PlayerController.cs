@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public float rightSpeed = 6f;
     public float leftSpeed = 2.5f;
-    public float screenWidth = 3f; 
+    public float screenWidth = 2.25f; 
     public Rigidbody2D rb;
 
     private float currentSpeed;
