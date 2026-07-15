@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public float deathMargin = 1f;
     public float scoreMultiplier = 10f;
 
+	public AudioSource menuMusic;
+	public AudioSource gameMusic;
+
     private bool isGameOver = false;
     private bool hasStarted = false;
     private float startY;
@@ -68,6 +71,9 @@ public class GameManager : MonoBehaviour
         startY = player.position.y;
         score = 0;
         if (mainMenuUI != null) mainMenuUI.SetActive(false);
+		if (menuMusic != null) menuMusic.Stop();
+		if (gameMusic != null) gameMusic.Play();
+
         Time.timeScale = 1f;
     }
 
@@ -85,6 +91,9 @@ public class GameManager : MonoBehaviour
 
         if (finalScoreText != null)
             finalScoreText.text = "Score: " + score + "\nBest: " + best;
+
+		if (gameMusic != null) gameMusic.Stop();
+		if (menuMusic != null) menuMusic.Play();
 
         if (gameOverUI != null) gameOverUI.SetActive(true);
         Time.timeScale = 0f;
