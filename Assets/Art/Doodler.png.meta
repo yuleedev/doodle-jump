@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 84a18ab0d6096484c80c3be415f6b6fb
+guid: 86c071f5acd5c4778a1c09454d7dfa7e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6361338934019842551
-    second: Doodler 1_0
+      213: -8220289014132401084
+    second: doodler2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Doodler 1_0
+      name: doodler2_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 3
         y: 0
-        width: 34
+        width: 39
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f16d128e04084850800000000000000
-      internalID: 6361338934019842551
+      spriteID: 44c9791d1baabed80800000000000000
+      internalID: -8220289014132401084
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Doodler 1_0: 6361338934019842551
+      doodler2_0: -8220289014132401084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
