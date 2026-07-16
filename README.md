@@ -2,9 +2,7 @@
 the ever so classic doodle jump game... but with only one key?!
 made for https://onekey.hackclub.com/ using unity in about six hours. terrible art all drawn by me
 
-[play the game on itch here!](https://yuleedev.itch.io/joodle-dump)
-
-password: joodledump
+play the game on itch [here!](https://yuleedev.itch.io/joodle-dump)
 
 ## how to play
 like the original, you:
