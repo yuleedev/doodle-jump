@@ -13,11 +13,15 @@ public class LevelGenerator : MonoBehaviour
     public float springChance = 0.2f;
     public float springXRange = 0.3f;
 
+    [Range(0f, 1f)]
+    public float breakableChance = 0.15f;
+
     public Camera cam;
     public float recycleMargin = 2f;
 
     private List<GameObject> platforms = new List<GameObject>();
     private float highestY = 0f;
+    private bool lastWasBreakable = false;
 
     void Start()
     {
@@ -31,9 +35,10 @@ public class LevelGenerator : MonoBehaviour
             spawnPosition.x = Random.Range(-levelWidth, levelWidth);
 
             GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
-            SetupSpring(newPlatform);
+            Configure(newPlatform, i < 2);
             platforms.Add(newPlatform);
         }
+
         highestY = spawnPosition.y;
     }
 
@@ -53,19 +58,28 @@ public class LevelGenerator : MonoBehaviour
     void Recycle(GameObject platform)
     {
         highestY += Random.Range(minY, maxY);
+
         Vector3 newPosition = new Vector3();
         newPosition.y = highestY;
         newPosition.x = Random.Range(-levelWidth, levelWidth);
         platform.transform.position = newPosition;
-        SetupSpring(platform);
+
+        Configure(platform, false);
     }
 
-    void SetupSpring(GameObject platformObject)
+    void Configure(GameObject platformObject, bool forceSafe)
     {
         Platform platform = platformObject.GetComponent<Platform>();
-        if (platform == null || platform.spring == null) return;
+        if (platform == null) return;
 
-        bool hasSpring = Random.value < springChance;
+        bool breakable = !forceSafe && !lastWasBreakable && Random.value < breakableChance;
+        lastWasBreakable = breakable;
+
+        platform.SetBreakable(breakable);
+
+        if (platform.spring == null) return;
+
+        bool hasSpring = !breakable && Random.value < springChance;
         platform.spring.SetActive(hasSpring);
 
         if (hasSpring)
